@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Edit</title>
+  </head>
+  <body>
+    <form method="POST">
+      {% csrf_token %}
+      <div>
+        <label>Title</label><br />
+        <input type="text" name="book_name" value="{{book.book_name}}" />
+      </div>
+      <div>
+        <label>Author</label><br />
+        <input type="text" name="author_name" value="{{book.author_name}}" />
+      </div>
+      <div>
+        <label>Price</label><br />
+        <input type="number" name="price" value="{{book.price}}" />
+      </div>
+      <div>
+        <input type="submit" value="Save" />
+      </div>
+    </form>
+  </body>
+</html>

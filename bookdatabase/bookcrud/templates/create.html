@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Create</title>
+  </head>
+  <body>
+    <form method="POST">
+      {% csrf_token %}
+      <div>
+        <label>Title</label><br />
+        <input type="text" name="book_name" />
+      </div>
+      <div>
+        <label>Author</label><br />
+        <input type="text" name="author_name" />
+      </div>
+      <div>
+        <label>Price</label><br />
+        <input type="number" name="price" min="1" />
+      </div>
+      <div>
+        <input type="submit" value="Create" />
+      </div>
+    </form>
+  </body>
+</html>

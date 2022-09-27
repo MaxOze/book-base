@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Books database</title>
+  </head>
+  <body>
+    <a href="create/">Create and add</a>
+    <h2>Books list</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in page_books %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.book_name }}</td>
+          <td>{{ book.author_name }}</td>
+          <td>{{ book.price }}</td>
+          <td>
+            <a href="edit/{{book.id}}">Edit</a> |
+            <a href="delete/{{book.id}}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if page_books.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_books.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ page_books.number }} of {{ page_books.paginator.num_pages }}.
+        </span>
+
+        {% if page_books.has_next %}
+        <a href="?page={{ page_books.next_page_number }}">next</a>
+        <a href="?page={{ page_books.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  </body>
+</html>
