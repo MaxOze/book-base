@@ -5,8 +5,21 @@
     <title>Books database</title>
   </head>
   <body>
-    <a href="create/">Create and add</a>
-    <h2>Books list</h2>
+    {% if role == 'none' %}
+      <p> <a href="{% url 'signin' %}"> Add new book </a> </p>
+    {% else %}
+      <p>
+        <a href="{% url 'create' %}"> Add new book </a> | <a href="{% url 'profile' %}"> Profile </a> | <a href="{% url 'logout' %}"> Log out </a> 
+      </p>
+    {% endif %}
+    <p>
+      <a href="{% url 'cart' %}"> Cart </a> | <a href="{% url 'orders' %}"> Orders </a>
+    </p>
+    {% if role == 'none' %}
+      <h2>Books list</h2>
+    {% else %}
+      <h2>Books list of {{ name }}</h2>
+    {% endif %}
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -23,10 +36,13 @@
           <td>{{ book.book_name }}</td>
           <td>{{ book.author_name }}</td>
           <td>{{ book.price }}</td>
-          <td>
-            <a href="edit/{{book.id}}">Edit</a> |
-            <a href="delete/{{book.id}}">Delete</a>
-          </td>
+          {% if role == 'admin' %}
+            <td>
+              <a href="{% url 'edit' book.id %}">Edit</a> |
+              <a href="{% url 'delete' book.id %}">Delete</a>
+            </td>
+          {% endif %}
+          <td><a href="{% url 'tocart' book.id %}?page={{ page_books.number }}">To cart</a></td>
         </tr>
         {% endfor %}
       </tbody>

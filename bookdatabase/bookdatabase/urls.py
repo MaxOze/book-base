@@ -19,11 +19,18 @@ from bookcrud import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('create/', views.create),
-    path('edit/<int:id>/', views.edit),
-    path("delete/<int:id>/", views.delete)
-    
+    path('', views.start),
+    path('shop/', views.index, name='shop'),
+    path('create/', views.create, name='create'),
+    path('edit/<int:id>/', views.edit, name='edit'),
+    path('delete/<int:id>/', views.delete, name='delete'),
+    path('signup/', views.signUp, name='signup'),
+    path('signin/', views.signIn, name='signin'),
+    path('logout/', views.logout, name='logout'),
+    path('profile/', views.profile, name='profile'),
+    path('tocart/<int:id>', views.toCart, name='tocart'),
+    path('cart/', views.cart, name='cart'),
+    path('orders/', views.orders, name='orders'),
 ]
 
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+    {% for key, value in orders.items %}
+    <div>
+        <h2>{{ key }}</h2>
+    </div>
+        {% for book in  value  %}
+            <div>
+                <p>{{ book.book_name }} | {{ book.author_name }} | {{ book.price }}</p>
+                <p></p>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div>
+        <h3><a class="btn" href="{% url 'shop' %}">Back to menu</a></h3>
+    </div>
+</body>
+</html>

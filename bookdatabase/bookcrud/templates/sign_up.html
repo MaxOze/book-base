@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <form method="POST" id="form">
+        {% csrf_token %}
+        {% load crispy_forms_tags %}
+        {{ form | crispy }}
+        <input class="btn" type="submit" id="button" value="Sign up"/>
+    </form>
+</body>
+</html>
+

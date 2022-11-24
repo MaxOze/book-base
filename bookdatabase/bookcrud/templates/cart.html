@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+    <table class="table_cart">
+    {% for book in books %}
+        <tr>
+            <td>{{ book.book_name }}</td>
+            <td>{{ book.author_name }}</td>
+            <td>{{ book.price }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <h2>Full price of order = {{ fullprice }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input class="btn" type="submit" value="Make an order"/>
+    </form>
+</body>
+</html>

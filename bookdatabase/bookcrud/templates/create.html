@@ -7,21 +7,8 @@
   <body>
     <form method="POST">
       {% csrf_token %}
-      <div>
-        <label>Title</label><br />
-        <input type="text" name="book_name" />
-      </div>
-      <div>
-        <label>Author</label><br />
-        <input type="text" name="author_name" />
-      </div>
-      <div>
-        <label>Price</label><br />
-        <input type="number" name="price" min="1" />
-      </div>
-      <div>
-        <input type="submit" value="Create" />
-      </div>
+      {{ form }}
+      <input class="btn" type="submit" value="Add"/>
     </form>
   </body>
 </html>

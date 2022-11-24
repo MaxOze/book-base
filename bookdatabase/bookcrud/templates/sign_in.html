@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization</title>
+</head>
+<body>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ form | crispy }}
+            <input class="btn" type="submit" value="Sign in"/>
+            {{ result }}
+        </form>
+    </div>
+    <div> 
+        <p class="mt-5 mb-3">Make new account <a href="{% url 'signup' %}">here</a> or be a <a href="/shop?page=1">guest</a></p>
+    </div>
+</body>
+</html>
